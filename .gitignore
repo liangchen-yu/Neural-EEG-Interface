@@ -216,3 +216,15 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# INFANT / EEG data
+*.edf
+*.bdf
+
+# Local research data and generated outputs
+data/
+uploads/
+results/
+
+# Local compatibility/testing artefacts
+*.npz
