@@ -6,11 +6,19 @@ extraction accessible through a web application using
 [NEURAL](https://github.com/BrianMur92/NEURAL_py_EEG_feature_set), an external
 research dependency. This application repository is separate from upstream NEURAL.
 
+Development focuses on the pinned NEURAL Python implementation, whose scientific
+behaviour should be treated conservatively. The older MATLAB qEEG implementation
+remains historical algorithm reference material, outside the intended supported
+application stack. MATLAB execution or validation is not an immediate project
+milestone. `downsample_open_eeg` remains a separate dataset-preparation utility
+unless its CSV/XZ workflow is confirmed as an application requirement.
+
 ## Project status
 
-- **Completed:** a Python 3.11.6 reference environment, initial pytest tests, and
-  compatibility investigations using Python 3.14.7.
-- **In progress:** documentation and reproducibility preparation for shared development.
+- **Completed:** a reproducible Python 3.11.6 reference environment, initial
+  pytest tests, and compatibility investigations using Python 3.14.7.
+- **In progress:** reproducing the Python 3.14 candidate environment and defining
+  the supported processing contract for the first application workflow.
 - **Planned:** a web interface, backend, independent NEURAL integration/service
   layer, and structured results. No frontend, backend, or API is implemented here yet.
 - **Known limitations:** IBI/burst features are unavailable without the external
@@ -35,9 +43,11 @@ py -3.11 -m venv .venv
 
 Installation requires access to public package sources and the upstream Git
 repository. `requirements-dev.txt` includes the reference dependencies and pytest.
-Transitive dependencies and build tooling are not fully locked. The existing local
-environment uses an editable NEURAL checkout; fresh installation from the pinned
-Git requirement remains a reproducibility check to complete.
+Transitive dependencies and build tooling are not fully locked. The Python 3.11.6
+reference setup has also been reproduced from a fresh clone,
+installing NEURAL directly from the pinned Git commit rather than relying on the
+local editable research checkout. The clean installation passed `pip check` and
+the current three-test pytest suite.
 
 There are three tests across two files: two import smoke tests in
 `tests/test_imports.py`, and a structural downsampling regression test in
@@ -81,10 +91,13 @@ identified synthetic data.
 
 ## Proposed next steps
 
-Flask is the current proposed backend framework, subject to team confirmation.
-The proposed NEURAL service layer should remain independent of Flask, with
-processing logic outside route functions.
+Python is the application/service-layer language, pytest is the current testing
+framework, and Flask is the intended backend/web framework. The Flask backend and
+application-owned service layer have not been implemented yet. The service layer
+will remain independent of Flask so that processing can be tested and called
+directly from Python.
 
-Next steps are to verify a fresh dependency installation, record a reproducible
-Python 3.14 configuration, expand synthetic preprocessing and non-IBI feature tests,
-and then implement the minimal service layer and agreed web interface/backend.
+Next steps are to record and reproduce the Python 3.14 candidate configuration,
+expand synthetic preprocessing and non-IBI feature tests, define the supported
+processing contract with the research team, and then implement the minimal service
+layer and agreed web interface/backend.
