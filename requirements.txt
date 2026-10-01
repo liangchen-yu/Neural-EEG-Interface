@@ -1,3 +1,5 @@
+# Reference dependency configuration for Python 3.11.6.
+# Not the final dependency configuration for the Python 3.14 candidate runtime.
 numpy==1.26.4
 pandas==1.5.3
 scipy==1.10.1
