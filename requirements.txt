@@ -1,9 +1,8 @@
-# Reference dependency configuration for Python 3.11.6.
-# Not the final dependency configuration for the Python 3.14 candidate runtime.
-numpy==1.26.4
-pandas==1.5.3
-scipy==1.10.1
-matplotlib==3.7.5
-mne==1.5.1
-pyEDFlib==0.1.36
+# development configuration for Python 3.14.7.
+numpy==2.5.3
+pandas==2.3.3
+scipy==1.18.1
+matplotlib==3.11.2
+mne==1.13.2
+pyEDFlib==0.1.42
 NEURAL_py_EEG @ git+https://github.com/BrianMur92/NEURAL_py_EEG_feature_set.git@78c94258e4a3e6504e469f418443c78926e1a6be
